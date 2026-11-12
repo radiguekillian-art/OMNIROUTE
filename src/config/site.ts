@@ -46,12 +46,19 @@ export const legalNav: NavItem[] = [
 ];
 
 /**
- * Visuel du hero. Image fixe agrandie par super-résolution
- * (scripts/upscale-hero.py). Pour une version animée, convertir le GIF
- * d'origine en vidéo (MP4/WebM) dans public/media/ et renseigner `video`.
+ * Animation du hero : le GIF d'origine (assets/originals/hero-oeillet.gif),
+ * agrandi ×4 par super-résolution puis converti en vidéo
+ * (scripts/upscale-hero.py). `video: null` affiche l'image fixe seule.
  */
 export const heroMedia = {
-  video: null as null | { webm: string; mp4: string },
+  video: {
+    /** 2000 px, ordinateur. */
+    webm: "/media/hero-oeillet.webm",
+    mp4: "/media/hero-oeillet.mp4",
+    /** 1000 px, mobile et tablette (beaucoup plus léger). */
+    webmSmall: "/media/hero-oeillet-1000.webm",
+    mp4Small: "/media/hero-oeillet-1000.mp4",
+  } as null | { webm: string; mp4: string; webmSmall: string; mp4Small: string },
   /** Couleur des bords de l'image : bandes latérales invisibles sur écran très large. */
   edgeColor: "#eef0f2",
 };
