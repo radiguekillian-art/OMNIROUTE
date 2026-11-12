@@ -71,7 +71,7 @@ Le logo est utilisé dans son rouge d'origine, sans recoloration.
 
 ### Hero et pied de page
 
-- **Hero** : `src/assets/images/ambiance/hero-oeillet.jpg`, affiché dans son format d'origine (16:9, sans recadrage). Le visuel reçu ne faisait que 500 px de large et était une image fixe : il a été agrandi ×4 par super-résolution (réseau EDSR, `scripts/upscale-hero.py`) pour rester net sur grand écran. Pour une version animée, envoyer le GIF d'origine : il sera converti en vidéo et branché via `heroMedia.video` dans `src/config/site.ts`.
+- **Hero** : l'animation d'origine (`assets/originals/hero-oeillet.gif`, l'œillet qui devient lys araignée) est affichée dans son format 16:9, sans recadrage. Chaque image du GIF (500 px de large) a été agrandie ×4 par super-résolution (réseau EDSR), puis la séquence a été encodée en vidéo MP4/WebM à sa cadence d'origine (`public/media/`, script `scripts/upscale-hero.py`). La première image sert d'affiche et de repli si les animations sont désactivées. Pour revenir à une image fixe : `heroMedia.video = null` dans `src/config/site.ts`.
 - **Pied de page** : fond flouté généré depuis `assets/originals/fond-lys-rouges.webp` (`npm run images`).
 
 ⚠️ Ces deux visuels d'ambiance proviennent de tiers (filigranes visibles sur les originaux) : vérifier les droits avant un usage commercial.

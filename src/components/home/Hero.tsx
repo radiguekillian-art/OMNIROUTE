@@ -20,7 +20,7 @@ export function Hero() {
   const content = (
     <>
       <div className="animate-rise w-[min(560px,82vw)] lg:w-full" style={delay(150)}>
-        <Logo className="w-full" priority sizes="(min-width: 1024px) 36vw, 82vw" />
+        <Logo className="w-full" priority sizes="(min-width: 1024px) 30vw, 82vw" />
       </div>
       <p className="animate-rise mt-3 text-[clamp(1.75rem,2.6vw,2.75rem)] leading-tight text-ink" style={delay(400)}>
         {t.title}
@@ -41,7 +41,7 @@ export function Hero() {
       <div className="relative mx-auto aspect-video w-full lg:w-[min(100%,calc((100svh-76px)*16/9))]">
         {heroMedia.video ? (
           <video
-            className="absolute inset-0 h-full w-full motion-reduce:hidden"
+            className="absolute inset-0 h-full w-full object-contain motion-reduce:hidden"
             autoPlay
             muted
             loop
@@ -58,7 +58,10 @@ export function Hero() {
           src={heroImage}
           alt=""
           aria-hidden="true"
-          priority
+          // Avec la vidéo, l'image ne sert qu'aux visiteurs qui désactivent les animations :
+          // elle n'est alors chargée que si elle s'affiche.
+          priority={!heroMedia.video}
+          loading={heroMedia.video ? "lazy" : undefined}
           fill
           quality={90}
           placeholder="blur"
@@ -66,8 +69,8 @@ export function Hero() {
           className={heroMedia.video ? "hidden object-contain motion-reduce:block" : "animate-fade object-contain"}
         />
 
-        {/* Ordinateur : contenu posé sur la partie claire, à gauche de l'œillet. */}
-        <div className="absolute inset-y-0 left-[6%] hidden w-[38%] flex-col items-start justify-center lg:flex">{content}</div>
+        {/* Ordinateur : contenu posé sur la partie claire, à gauche des fleurs (qui commencent vers 38 %). */}
+        <div className="absolute inset-y-0 left-[5%] hidden w-[30%] flex-col items-start justify-center lg:flex">{content}</div>
       </div>
 
       {/* Mobile et tablette : contenu sous l'image. */}

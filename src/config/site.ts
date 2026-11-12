@@ -46,9 +46,9 @@ export const legalNav: NavItem[] = [
 ];
 
 /**
- * Visuel du hero. Image fixe agrandie par super-résolution
- * (scripts/upscale-hero.py). Pour une version animée, convertir le GIF
- * d'origine en vidéo (MP4/WebM) dans public/media/ et renseigner `video`.
+ * Animation du hero : le GIF d'origine (assets/originals/hero-oeillet.gif),
+ * agrandi ×4 par super-résolution puis converti en vidéo
+ * (scripts/upscale-hero.py). `video: null` affiche l'image fixe seule.
  */
 export const heroMedia = {
   video: null as null | { webm: string; mp4: string },
