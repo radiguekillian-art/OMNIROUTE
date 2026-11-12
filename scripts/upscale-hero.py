@@ -5,7 +5,7 @@ Prépare l'animation du hero à partir du GIF d'origine, en pleine qualité.
 2. l'agrandit ×4 par super-résolution (réseau EDSR, OpenCV) : contours nets
    au lieu du flou et du tramage d'un simple redimensionnement ;
 3. encode la séquence en vidéo MP4 (H.264) et WebM (VP9), au format et à la
-   cadence d'origine, beaucoup plus légère qu'un GIF ;
+   cadence d'origine, en 2000 px (ordinateur) et 1000 px (mobile) ;
 4. enregistre la première image comme image fixe (affiche de la vidéo et
    repli si les animations sont désactivées).
 
@@ -56,13 +56,24 @@ def main() -> None:
         pattern = str(work / "sr%03d.png")
         base = ["ffmpeg", "-loglevel", "error", "-y", "-framerate", f"{fps:.4f}", "-i", pattern]
         subprocess.run(
-            [*base, "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-pix_fmt", "yuv420p",
+            [*base, "-c:v", "libx264", "-preset", "veryslow", "-crf", "21", "-tune", "animation", "-pix_fmt", "yuv420p",
              "-movflags", "+faststart", "-an", str(MEDIA / "hero-oeillet.mp4")],
             check=True,
         )
         subprocess.run(
             [*base, "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "24", "-row-mt", "1", "-pix_fmt", "yuv420p",
              "-an", str(MEDIA / "hero-oeillet.webm")],
+            check=True,
+        )
+        small = ["-vf", "scale=1000:-2:flags=lanczos"]
+        subprocess.run(
+            [*base, *small, "-c:v", "libx264", "-preset", "veryslow", "-crf", "21", "-tune", "animation",
+             "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-an", str(MEDIA / "hero-oeillet-1000.mp4")],
+            check=True,
+        )
+        subprocess.run(
+            [*base, *small, "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "28", "-row-mt", "1", "-pix_fmt", "yuv420p",
+             "-an", str(MEDIA / "hero-oeillet-1000.webm")],
             check=True,
         )
         Image.open(work / "sr000.png").convert("RGB").save(STILL, "JPEG", quality=88, optimize=True, progressive=True)

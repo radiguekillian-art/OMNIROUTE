@@ -51,7 +51,14 @@ export const legalNav: NavItem[] = [
  * (scripts/upscale-hero.py). `video: null` affiche l'image fixe seule.
  */
 export const heroMedia = {
-  video: null as null | { webm: string; mp4: string },
+  video: {
+    /** 2000 px, ordinateur. */
+    webm: "/media/hero-oeillet.webm",
+    mp4: "/media/hero-oeillet.mp4",
+    /** 1000 px, mobile et tablette (beaucoup plus léger). */
+    webmSmall: "/media/hero-oeillet-1000.webm",
+    mp4Small: "/media/hero-oeillet-1000.mp4",
+  } as null | { webm: string; mp4: string; webmSmall: string; mp4Small: string },
   /** Couleur des bords de l'image : bandes latérales invisibles sur écran très large. */
   edgeColor: "#eef0f2",
 };

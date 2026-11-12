@@ -50,6 +50,8 @@ export function Hero() {
             aria-hidden="true"
             tabIndex={-1}
           >
+            <source src={heroMedia.video.webmSmall} type="video/webm" media="(max-width: 1023px)" />
+            <source src={heroMedia.video.mp4Small} type="video/mp4" media="(max-width: 1023px)" />
             <source src={heroMedia.video.webm} type="video/webm" />
             <source src={heroMedia.video.mp4} type="video/mp4" />
           </video>
