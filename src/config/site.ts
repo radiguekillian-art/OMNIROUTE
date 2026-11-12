@@ -44,3 +44,14 @@ export const legalNav: NavItem[] = [
   { label: "Livraison et retours", href: "/livraison-retours" },
   { label: "Mentions légales", href: "/mentions-legales" },
 ];
+
+/**
+ * Visuel du hero. Image fixe agrandie par super-résolution
+ * (scripts/upscale-hero.py). Pour une version animée, convertir le GIF
+ * d'origine en vidéo (MP4/WebM) dans public/media/ et renseigner `video`.
+ */
+export const heroMedia = {
+  video: null as null | { webm: string; mp4: string },
+  /** Couleur des bords de l'image : bandes latérales invisibles sur écran très large. */
+  edgeColor: "#eef0f2",
+};

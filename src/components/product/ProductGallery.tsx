@@ -81,7 +81,7 @@ export function ProductGallery({ images, productName }: { images: ProductImage[]
             <ZoomIcon size={18} />
           </span>
         </button>
-        <figcaption className="mt-3 flex gap-4 text-[0.5625rem] text-stone">
+        <figcaption className="mt-3 flex gap-4 text-[1rem] text-stone">
           <span className="eyebrow text-carmine">{String(index + 1).padStart(2, "0")}</span>
           {image.caption}
         </figcaption>
@@ -129,32 +129,29 @@ export function ProductGallery({ images, productName }: { images: ProductImage[]
             </div>
           ))}
         </div>
-        <div className="mt-4 flex items-center justify-between">
-          <p className="text-[0.5625rem] text-stone">
-            <span className="eyebrow mr-3 text-ink tabular-nums">
-              {current + 1} / {images.length}
-            </span>
-            {images[current]?.caption}
-          </p>
-          <div className="flex gap-2" aria-label="Choisir une photographie">
-            {images.map((image, index) => (
-              <button
-                key={index}
-                type="button"
-                onClick={() => goTo(index)}
-                aria-label={`Photographie ${index + 1} : ${image.caption}`}
-                aria-current={current === index ? "true" : undefined}
-                className="grid h-6 w-4 place-items-center"
-              >
-                <span
-                  className={cn(
-                    "block h-px transition-all duration-500",
-                    current === index ? "w-4 bg-ink" : "w-2 bg-silver",
-                  )}
-                />
-              </button>
-            ))}
-          </div>
+        <p className="mt-4 text-[1.0625rem] text-stone">
+          <span className="eyebrow mr-3 text-ink tabular-nums">
+            {current + 1} / {images.length}
+          </span>
+          {images[current]?.caption}
+        </p>
+        <div className="no-scrollbar -mx-5 mt-3 flex gap-2 overflow-x-auto px-5 sm:-mx-8 sm:px-8" aria-label="Choisir une photographie">
+          {images.map((image, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => goTo(index)}
+              aria-label={`Photographie ${index + 1} : ${image.caption}`}
+              aria-current={current === index ? "true" : undefined}
+              className={cn(
+                "relative h-[70px] w-14 shrink-0 overflow-hidden border transition-[opacity,border-color] duration-300",
+                current === index ? "border-ink" : "border-transparent opacity-55",
+              )}
+              style={{ backgroundColor: image.background }}
+            >
+              <Image src={image.src} alt="" fill sizes="56px" className="object-cover" />
+            </button>
+          ))}
         </div>
       </div>
 

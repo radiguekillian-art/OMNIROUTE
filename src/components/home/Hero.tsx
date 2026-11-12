@@ -1,48 +1,77 @@
+import Image from "next/image";
 import type { CSSProperties } from "react";
 
+import heroImage from "@/assets/images/ambiance/hero-oeillet.jpg";
 import { Logo } from "@/components/brand/Logo";
 import { ButtonLink } from "@/components/ui/Button";
+import { heroMedia } from "@/config/site";
 import { getDictionary } from "@/i18n";
-
-import { HeroVideo } from "./HeroVideo";
 
 const delay = (ms: number) => ({ "--delay": `${ms}ms` }) as CSSProperties;
 
-/** Hero plein écran : animation des lys et logo FADIYE dans son rouge d'origine. */
+/**
+ * Hero : le visuel d'ambiance est affiché dans son format d'origine (16:9),
+ * sans recadrage. Sur ordinateur, le logo se pose sur la partie claire de
+ * l'image ; sur mobile, il passe sous l'image pour ne rien masquer.
+ */
 export function Hero() {
   const t = getDictionary().home.hero;
 
-  return (
-    <section
-      aria-labelledby="hero-title"
-      className="relative isolate flex min-h-[calc(100svh-64px)] items-center justify-center overflow-hidden bg-white lg:min-h-[calc(100svh-76px)]"
-    >
-      <HeroVideo />
-      {/* Voile lumineux : détache le logo rouge des fleurs sans masquer l'animation. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(ellipse_58%_42%_at_50%_52%,rgba(255,255,255,0.88)_0%,rgba(255,255,255,0.55)_45%,rgba(255,255,255,0)_100%)]"
-      />
-
-      <div className="relative z-10 flex flex-col items-center px-5 py-20 text-center">
-        <h1 id="hero-title" className="sr-only">
-          FADIYE — {t.title}
-        </h1>
-        <div className="animate-rise w-[min(820px,88vw)]" style={delay(150)}>
-          <Logo className="w-full drop-shadow-[0_2px_24px_rgba(255,255,255,0.9)]" priority sizes="(min-width: 960px) 820px, 88vw" />
-        </div>
-        <p
-          className="animate-rise mt-4 font-serif text-[clamp(1.75rem,3.2vw,2.75rem)] font-normal tracking-normal text-ink"
-          style={delay(400)}
-        >
-          {t.title}
-        </p>
-        <div className="animate-rise mt-10" style={delay(600)}>
-          <ButtonLink href="#la-piece" arrow>
-            {t.cta}
-          </ButtonLink>
-        </div>
+  const content = (
+    <>
+      <div className="animate-rise w-[min(560px,82vw)] lg:w-full" style={delay(150)}>
+        <Logo className="w-full" priority sizes="(min-width: 1024px) 36vw, 82vw" />
       </div>
+      <p className="animate-rise mt-3 text-[clamp(1.75rem,2.6vw,2.75rem)] leading-tight text-ink" style={delay(400)}>
+        {t.title}
+      </p>
+      <div className="animate-rise mt-8 lg:mt-10" style={delay(600)}>
+        <ButtonLink href="#la-piece" arrow>
+          {t.cta}
+        </ButtonLink>
+      </div>
+    </>
+  );
+
+  return (
+    <section aria-labelledby="hero-title" className="relative" style={{ backgroundColor: heroMedia.edgeColor }}>
+      <h1 id="hero-title" className="sr-only">
+        FADIYE — {t.title}
+      </h1>
+      <div className="relative mx-auto aspect-video w-full lg:w-[min(100%,calc((100svh-76px)*16/9))]">
+        {heroMedia.video ? (
+          <video
+            className="absolute inset-0 h-full w-full motion-reduce:hidden"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={heroImage.src}
+            aria-hidden="true"
+            tabIndex={-1}
+          >
+            <source src={heroMedia.video.webm} type="video/webm" />
+            <source src={heroMedia.video.mp4} type="video/mp4" />
+          </video>
+        ) : null}
+        <Image
+          src={heroImage}
+          alt=""
+          aria-hidden="true"
+          priority
+          fill
+          quality={90}
+          placeholder="blur"
+          sizes="100vw"
+          className={heroMedia.video ? "hidden object-contain motion-reduce:block" : "animate-fade object-contain"}
+        />
+
+        {/* Ordinateur : contenu posé sur la partie claire, à gauche de l'œillet. */}
+        <div className="absolute inset-y-0 left-[6%] hidden w-[38%] flex-col items-start justify-center lg:flex">{content}</div>
+      </div>
+
+      {/* Mobile et tablette : contenu sous l'image. */}
+      <div className="flex flex-col items-center bg-white px-5 pb-14 pt-10 text-center lg:hidden">{content}</div>
     </section>
   );
 }

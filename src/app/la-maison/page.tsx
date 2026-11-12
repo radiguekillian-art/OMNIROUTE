@@ -187,7 +187,7 @@ export default function MaisonPage() {
               <Reveal as="li" key={color.hex} delay={index * 100}>
                 <div className="aspect-[4/5] border border-line" style={{ backgroundColor: color.hex }} />
                 <p className="eyebrow mt-5">{color.name}</p>
-                <p className="mt-1 text-[0.5625rem] uppercase tabular-nums tracking-[0.12em] text-stone">{color.hex}</p>
+                <p className="mt-1 font-sans text-[0.5625rem] uppercase tabular-nums tracking-[0.12em] text-stone">{color.hex}</p>
                 <p className="mt-3 max-w-[16rem] copy text-stone">{color.note}</p>
               </Reveal>
             ))}

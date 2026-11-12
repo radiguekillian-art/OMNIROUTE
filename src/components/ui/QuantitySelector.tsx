@@ -15,7 +15,7 @@ type QuantitySelectorProps = {
 
 export function QuantitySelector({ value, onChange, label = "Quantité", size = "md", className }: QuantitySelectorProps) {
   const max = commerce.maxQuantityPerLine;
-  const box = size === "sm" ? "h-9 w-9" : "h-12 w-12";
+  const box = size === "sm" ? "h-9 w-9" : "h-12 w-10 sm:w-12";
 
   return (
     <div role="group" aria-label={label} className={cn("inline-flex items-center border border-line bg-white", className)}>
@@ -28,7 +28,7 @@ export function QuantitySelector({ value, onChange, label = "Quantité", size = 
       >
         <MinusIcon size={14} />
       </button>
-      <output aria-live="polite" aria-label={`${label} : ${value}`} className="min-w-8 text-center text-[0.6875rem] tabular-nums">
+      <output aria-live="polite" aria-label={`${label} : ${value}`} className="min-w-8 text-center font-sans text-[0.6875rem] tabular-nums">
         {value}
       </output>
       <button

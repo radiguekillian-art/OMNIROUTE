@@ -52,13 +52,13 @@ export function Header() {
           </Link>
 
           <nav aria-label="Navigation principale" className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
-            <ul className="flex items-center gap-12">
+            <ul className="flex items-center gap-12 leading-none">
               {mainNav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     aria-current={isActive(item.href) ? "page" : undefined}
-                    className="eyebrow link-underline py-1 transition-colors hover:text-carmine"
+                    className="eyebrow link-underline inline-block py-1 leading-none transition-colors hover:text-carmine"
                   >
                     {item.label}
                   </Link>
@@ -88,7 +88,7 @@ export function Header() {
               <span
                 aria-hidden="true"
                 className={cn(
-                  "absolute left-1/2 top-[25px] -translate-x-1/2 text-[0.5625rem] font-semibold tabular-nums transition-opacity",
+                  "absolute left-1/2 top-[25px] -translate-x-1/2 font-sans text-[0.5625rem] font-semibold tabular-nums transition-opacity",
                   hydrated && count > 0 ? "opacity-100" : "opacity-0",
                 )}
               >

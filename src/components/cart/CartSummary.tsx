@@ -9,11 +9,11 @@ export function CartSummary() {
   const { subtotal } = useCart();
 
   return (
-    <div className="space-y-3 text-[0.625rem]">
+    <div className="space-y-3 text-[1.0625rem]">
       <dl className="space-y-3">
         <div className="flex items-baseline justify-between gap-6">
           <dt className="eyebrow">Sous-total</dt>
-          <dd className={subtotal === null ? "text-right text-stone" : "text-right text-[0.75rem] tabular-nums"}>
+          <dd className={subtotal === null ? "text-right text-stone" : "text-right text-[1.25rem] tabular-nums"}>
             {subtotal === null ? "À confirmer" : formatPrice(subtotal)}
           </dd>
         </div>

@@ -36,12 +36,12 @@ export function CartLineItem({ line, variant = "drawer", onNavigate }: CartLineI
             <Link href={href} onClick={onNavigate} className="eyebrow link-underline text-ink">
               {line.product.name}
             </Link>
-            <p className="mt-2 text-[0.625rem] text-stone">Taille {line.size}</p>
+            <p className="mt-2 text-[1.0625rem] text-stone">Taille {line.size}</p>
             {line.product.status !== "available" ? (
-              <p className="mt-1 text-[0.625rem] text-stone">{availabilityLabel(line.product)}</p>
+              <p className="mt-1 text-[1.0625rem] text-stone">{availabilityLabel(line.product)}</p>
             ) : null}
           </div>
-          <p className={cn("shrink-0 text-right text-[0.625rem] tabular-nums", line.total === null && "text-stone")}>
+          <p className={cn("shrink-0 text-right text-[1.0625rem] tabular-nums", line.total === null && "text-stone")}>
             {line.total === null ? "Prix à venir" : formatPrice(line.total)}
           </p>
         </div>
@@ -56,7 +56,7 @@ export function CartLineItem({ line, variant = "drawer", onNavigate }: CartLineI
           <button
             type="button"
             onClick={() => removeItem(line.slug, line.size)}
-            className="text-[0.5625rem] uppercase tracking-[0.18em] text-stone underline-offset-4 transition-colors hover:text-carmine hover:underline"
+            className="font-sans text-[0.5625rem] uppercase tracking-[0.18em] text-stone underline-offset-4 transition-colors hover:text-carmine hover:underline"
           >
             Retirer<span className="sr-only"> {line.product.name}, taille {line.size}</span>
           </button>

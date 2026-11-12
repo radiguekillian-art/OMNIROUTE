@@ -39,22 +39,23 @@
     scroll-behavior: smooth;
   }
 
+  /* Aquiline Two est la police par défaut de tout le texte du site. */
   body {
-    @apply bg-paper font-sans text-ink antialiased;
-    /* Graisse et chasse accordées à Akira (aussi appliquées au secours Archivo). */
+    @apply bg-paper font-serif text-ink antialiased;
+    font-size: 1.125rem;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+
+  /* Akira Expanded : réservée aux titres, surtitres, navigation, boutons et
+     sélecteurs. Akira n'a que des capitales : la casse est forcée pour que les
+     lettres accentuées fournies par la police de secours soient aussi en
+     capitales ; graisse et chasse sont accordées pour ce même secours. */
+  .font-sans {
     font-weight: 800;
     font-stretch: 125%;
     letter-spacing: 0.04em;
-    /* Akira n'a que des capitales : on force la casse pour que les lettres
-       accentuées fournies par la police de secours soient aussi en capitales. */
     text-transform: uppercase;
-  }
-
-  /* Tout texte en Aquiline garde sa casse, sa graisse et son approche. */
-  .font-serif {
-    text-transform: none;
-    font-weight: 400;
-    letter-spacing: 0;
   }
 
   ::selection {
@@ -81,11 +82,14 @@
   .eyebrow {
     @apply font-sans text-[0.625rem] uppercase tracking-[0.14em];
     font-weight: 800;
+    font-stretch: 125%;
+    line-height: 1.5;
   }
 
   .display {
     @apply font-sans uppercase tracking-[-0.01em];
     font-weight: 800;
+    font-stretch: 125%;
     line-height: 1;
     overflow-wrap: anywhere;
   }
@@ -103,20 +107,13 @@
 
   /* Textes éditoriaux : Aquiline Two, à taille généreuse pour rester lisible. */
   .prose-fadiye {
-    @apply font-serif text-[1.3125rem] leading-[1.45] text-stone;
-    font-weight: 400;
-    letter-spacing: 0;
-    text-transform: none;
+    @apply text-[1.3125rem] leading-[1.45] text-stone;
   }
 
-  /* Notes et paragraphes courts en Aquiline. */
+  /* Notes et paragraphes courts. */
   .copy {
-    font-family: var(--font-serif);
-    text-transform: none;
     font-size: 1.1875rem;
     line-height: 1.4;
-    font-weight: 400;
-    letter-spacing: 0;
   }
 
   .container-fadiye {

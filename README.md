@@ -69,14 +69,19 @@ Les originaux fournis sont conservés dans `assets/originals/`. `scripts/prepare
 
 Le logo est utilisé dans son rouge d'origine, sans recoloration.
 
-L'animation du hero (`assets/originals/hero-lys.gif`) est convertie en vidéo MP4/WebM (`public/media/`), environ dix fois plus légère que le GIF. Avec « animations réduites », une image fixe la remplace. ⚠️ Ce GIF provient d'un tiers (filigrane visible) : vérifier les droits avant un usage commercial, ou le remplacer par une animation propre à la marque.
+### Hero et pied de page
+
+- **Hero** : `src/assets/images/ambiance/hero-oeillet.jpg`, affiché dans son format d'origine (16:9, sans recadrage). Le visuel reçu ne faisait que 500 px de large et était une image fixe : il a été agrandi ×4 par super-résolution (réseau EDSR, `scripts/upscale-hero.py`) pour rester net sur grand écran. Pour une version animée, envoyer le GIF d'origine : il sera converti en vidéo et branché via `heroMedia.video` dans `src/config/site.ts`.
+- **Pied de page** : fond flouté généré depuis `assets/originals/fond-lys-rouges.webp` (`npm run images`).
+
+⚠️ Ces deux visuels d'ambiance proviennent de tiers (filigranes visibles sur les originaux) : vérifier les droits avant un usage commercial.
 
 ## Typographies
 
 | Rôle | Police | Fichier |
 |---|---|---|
-| Titres, navigation, boutons, prix | Akira Expanded | `src/assets/fonts/akira-expanded.woff2` |
-| Textes éditoriaux | Aquiline Two | `src/assets/fonts/aquiline-two.woff2` |
+| Titres, surtitres, navigation, boutons, tailles, quantités | Akira Expanded | `src/assets/fonts/akira-expanded.woff2` |
+| Tous les textes (police par défaut) : descriptions, prix, légendes, liens du pied de page, panier, pages légales | Aquiline Two | `src/assets/fonts/aquiline-two.woff2` |
 | Secours (accents, €) | Archivo Expanded (Google Fonts) | chargée par `next/font` |
 
 ⚠️ **Akira Expanded est la version démo, réservée à un usage personnel** (voir `assets/originals/AkiraExpanded-LICENCE.txt`). Une licence commerciale est nécessaire avant l'ouverture des ventes. La version démo ne contient pas les lettres accentuées ni le symbole € : elles sont fournies par Archivo. Avec la version complète, remplacer simplement `akira-expanded.woff2`.
