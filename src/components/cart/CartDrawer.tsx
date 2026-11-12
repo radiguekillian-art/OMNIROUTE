@@ -53,7 +53,7 @@ export function CartDrawer() {
 
         {lines.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center px-8 text-center">
-            <p className="display text-4xl">Votre panier est vide.</p>
+            <p className="display text-xl">Votre panier est vide.</p>
             <p className="prose-fadiye mt-4 max-w-xs">Découvrez la première collection FADIYE.</p>
             <ButtonLink href="/collection" onClick={closeCart} className="mt-10" arrow>
               Découvrir la collection

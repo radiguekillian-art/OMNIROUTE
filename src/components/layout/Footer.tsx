@@ -23,7 +23,7 @@ export function Footer() {
           <ul className="mt-6 space-y-3">
             {mainNav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="link-underline text-[0.875rem] hover:text-carmine">
+                <Link href={item.href} className="link-underline text-[0.6875rem] hover:text-carmine">
                   {item.label}
                 </Link>
               </li>
@@ -33,7 +33,7 @@ export function Footer() {
 
         <div className="lg:col-span-2">
           <h2 className="eyebrow text-stone">Contact</h2>
-          <ul className="mt-6 space-y-3 text-[0.875rem]">
+          <ul className="mt-6 space-y-3 text-[0.6875rem]">
             {email ? (
               <li>
                 <a href={`mailto:${email}`} className="link-underline break-all hover:text-carmine">
@@ -63,7 +63,7 @@ export function Footer() {
           <ul className="mt-6 space-y-3">
             {legalNav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="link-underline text-[0.875rem] hover:text-carmine">
+                <Link href={item.href} className="link-underline text-[0.6875rem] hover:text-carmine">
                   {item.label}
                 </Link>
               </li>
@@ -72,7 +72,7 @@ export function Footer() {
         </nav>
       </div>
 
-      <div className="container-fadiye flex flex-col gap-3 border-t border-line py-6 text-[0.75rem] text-stone sm:flex-row sm:items-center sm:justify-between">
+      <div className="container-fadiye flex flex-col gap-3 border-t border-line py-6 text-[0.5625rem] text-stone sm:flex-row sm:items-center sm:justify-between">
         <p>© {year} FADIYE. Tous droits réservés.</p>
         <p className="eyebrow text-[0.625rem]">Collection 01 — Automne / Hiver</p>
       </div>

@@ -6,7 +6,7 @@ import { cn } from "@/lib/format";
 type Variant = "primary" | "outline" | "light";
 
 const base =
-  "group/button relative inline-flex min-h-12 items-center justify-center gap-3 overflow-hidden px-6 text-center font-sans text-[0.6875rem] font-medium uppercase tracking-[0.18em] sm:px-8 sm:tracking-[0.24em] transition-colors duration-500 ease-[var(--ease-couture)] disabled:opacity-40";
+  "group/button relative inline-flex min-h-12 items-center justify-center gap-3 overflow-hidden whitespace-nowrap px-4 text-center font-sans text-[0.625rem] uppercase tracking-[0.06em] sm:px-8 sm:tracking-[0.12em] transition-colors duration-500 ease-[var(--ease-couture)] disabled:opacity-40";
 
 const variants: Record<Variant, string> = {
   primary: "bg-ink text-white hover:bg-carmine focus-visible:bg-carmine",

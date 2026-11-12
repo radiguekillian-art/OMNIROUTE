@@ -10,7 +10,7 @@ export function Accordion({ title, children, defaultOpen }: { title: string; chi
         {title}
         <PlusIcon size={14} className="shrink-0 transition-transform duration-500 group-open:rotate-45" />
       </summary>
-      <div className="pb-6 text-[0.875rem] leading-[1.75] text-stone">{children}</div>
+      <div className="copy pb-6 text-stone">{children}</div>
     </details>
   );
 }

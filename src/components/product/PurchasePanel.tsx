@@ -63,7 +63,7 @@ export function PurchasePanel({ slug, sizeGuide }: { slug: string; sizeGuide: Si
           errorId={`${id}-error`}
         />
         {!product.sizesConfirmed ? (
-          <p className="mt-3 text-[0.75rem] text-stone">Grille de tailles en cours de confirmation.</p>
+          <p className="mt-3 text-[0.5625rem] text-stone">Grille de tailles en cours de confirmation.</p>
         ) : null}
       </div>
 
@@ -75,13 +75,13 @@ export function PurchasePanel({ slug, sizeGuide }: { slug: string; sizeGuide: Si
       </div>
 
       {error ? (
-        <p id={`${id}-error`} role="alert" className="-mt-4 text-[0.8125rem] text-carmine">
+        <p id={`${id}-error`} role="alert" className="-mt-4 text-[0.625rem] text-carmine">
           {error}
         </p>
       ) : null}
 
       {product.status === "coming-soon" || !paymentsEnabled ? (
-        <p className="border-l border-carmine pl-4 text-[0.8125rem] leading-relaxed text-stone">
+        <p className="border-l border-carmine pl-4 copy text-stone">
           {product.status === "coming-soon"
             ? "Pièce présentée avant l’ouverture des ventes. "
             : null}

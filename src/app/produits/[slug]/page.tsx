@@ -3,9 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ProductGallery } from "@/components/product/ProductGallery";
+import { ProductSpecifics } from "@/components/product/ProductSpecifics";
 import { PurchasePanel } from "@/components/product/PurchasePanel";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Accordion } from "@/components/ui/Accordion";
+import { TextLink } from "@/components/ui/Button";
 import { commerce, pendingCopy } from "@/config/commerce";
 import { siteConfig } from "@/config/site";
 import { getCategoryLabel } from "@/data/categories";
@@ -80,7 +82,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <div className="container-fadiye pb-24 pt-6 lg:pb-32 lg:pt-10">
         <nav aria-label="Fil d’Ariane" className="mb-6 lg:mb-10">
-          <ol className="flex flex-wrap items-center gap-2 text-[0.75rem] text-stone">
+          <ol className="flex flex-wrap items-center gap-2 text-[0.5625rem] text-stone">
             <li>
               <Link href="/collection" className="link-underline hover:text-ink">
                 Collection
@@ -114,10 +116,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <span aria-hidden="true" className="inline-block h-px w-8 bg-carmine" />
                 {collection.title} — {collection.season}
               </p>
-              <h1 className="display mt-5 text-[clamp(2.75rem,4.2vw,4rem)]">{product.name}</h1>
+              <h1 className="display mt-5 text-[clamp(1.875rem,2.8vw,2.625rem)] leading-[1.05]">{product.name}</h1>
 
               <div className="mt-6 flex items-baseline justify-between gap-6 border-y border-line py-4">
-                <p className={cn("text-[0.9375rem]", product.price === null ? "text-stone" : "tabular-nums")}>
+                <p className={cn("text-[0.6875rem]", product.price === null ? "text-stone" : "tabular-nums")}>
                   {formatPrice(product.price)}
                 </p>
                 <p className="eyebrow text-stone">{availabilityLabel(product)}</p>
@@ -125,18 +127,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
               <p className="prose-fadiye mt-8">{product.description}</p>
 
+              <TextLink href="#specificites" className="mt-8">
+                Voir les spécificités
+              </TextLink>
+
               <div className="mt-10">
                 <PurchasePanel slug={product.slug} sizeGuide={sizeGuides[product.slug]} />
               </div>
 
               <div className="mt-12 border-t border-line">
-                <Accordion title="Caractéristiques" defaultOpen>
+                <Accordion title="Caractéristiques">
                   <ul className="space-y-2">
                     {product.features.map((feature) => (
-                      <li key={feature} className="flex gap-3">
-                        <span aria-hidden="true" className="mt-[0.8em] inline-block h-px w-3 shrink-0 bg-carmine" />
-                        {feature}
-                      </li>
+                      <li key={feature}>{feature}</li>
                     ))}
                   </ul>
                 </Accordion>
@@ -168,6 +171,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
       </div>
+
+      <ProductSpecifics product={product} />
     </>
   );
 }

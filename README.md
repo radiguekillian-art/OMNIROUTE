@@ -39,6 +39,7 @@ Après modification d'une variable sur Vercel, relancer un déploiement.
 | Livraison, retours, devise, quantité max, panier avant lancement | `src/config/commerce.ts` |
 | Navigation, contact, réseaux | `src/config/site.ts` |
 | Textes éditoriaux (accueil, La Maison) | `src/i18n/dictionaries/fr.ts` |
+| Spécificités du produit (fiche produit) | `details` dans `src/data/products.ts` |
 | Pages légales | `src/content/legal.ts` |
 | Couleurs, typographies | `src/app/globals.css` (`@theme`) |
 
@@ -66,7 +67,21 @@ Pages produit, collection, nouveautés, recherche, sitemap et données structur�
 
 Les originaux fournis sont conservés dans `assets/originals/`. `scripts/prepare-images.py` en dérive les fichiers du site : ré-encodage, recadrages de détails (broderie, fermoirs, maille) depuis le packshot réel, déclinaisons noire/blanche/rouge du logo (même tracé calligraphique), icône (lys de l'étiquette) et image de partage. Next.js sert ensuite chaque image en AVIF/WebP à la bonne taille.
 
-Le GIF animé reçu (lys araignées, filigrane d'un tiers) n'est pas utilisé : c'est un contenu tiers, et la fleur doit rester un symbole discret.
+Le logo est utilisé dans son rouge d'origine, sans recoloration.
+
+L'animation du hero (`assets/originals/hero-lys.gif`) est convertie en vidéo MP4/WebM (`public/media/`), environ dix fois plus légère que le GIF. Avec « animations réduites », une image fixe la remplace. ⚠️ Ce GIF provient d'un tiers (filigrane visible) : vérifier les droits avant un usage commercial, ou le remplacer par une animation propre à la marque.
+
+## Typographies
+
+| Rôle | Police | Fichier |
+|---|---|---|
+| Titres, navigation, boutons, prix | Akira Expanded | `src/assets/fonts/akira-expanded.woff2` |
+| Textes éditoriaux | Aquiline Two | `src/assets/fonts/aquiline-two.woff2` |
+| Secours (accents, €) | Archivo Expanded (Google Fonts) | chargée par `next/font` |
+
+⚠️ **Akira Expanded est la version démo, réservée à un usage personnel** (voir `assets/originals/AkiraExpanded-LICENCE.txt`). Une licence commerciale est nécessaire avant l'ouverture des ventes. La version démo ne contient pas les lettres accentuées ni le symbole € : elles sont fournies par Archivo. Avec la version complète, remplacer simplement `akira-expanded.woff2`.
+
+Aquiline Two (Manfred Klein, d'après Aquiline) est fournie sans fichier de licence : vérifier ses conditions d'usage commercial.
 
 ## Arborescence
 

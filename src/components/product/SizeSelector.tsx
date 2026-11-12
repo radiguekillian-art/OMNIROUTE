@@ -38,7 +38,7 @@ export function SizeSelector({ sizes, value, onChange, name, error, errorId }: S
             />
             <span
               className={cn(
-                "flex h-12 items-center justify-center border text-[0.8125rem] tracking-[0.08em] transition-colors duration-300",
+                "flex h-12 items-center justify-center border text-[0.625rem] tracking-[0.08em] transition-colors duration-300",
                 "peer-focus-visible:outline peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-carmine",
                 checked ? "border-ink bg-ink text-white" : "border-line bg-white text-ink hover:border-ink",
                 soldOut && "border-line bg-transparent text-silver line-through hover:border-line",

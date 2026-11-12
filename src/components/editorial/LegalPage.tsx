@@ -31,7 +31,7 @@ export function LegalPage({ slug }: { slug: LegalDocument["slug"] }) {
                   href={item.href}
                   aria-current={item.href === `/${slug}` ? "page" : undefined}
                   className={cn(
-                    "link-underline text-[0.875rem] transition-colors",
+                    "link-underline text-[0.6875rem] transition-colors",
                     item.href === `/${slug}` ? "text-ink" : "text-stone hover:text-ink",
                   )}
                 >
@@ -44,11 +44,11 @@ export function LegalPage({ slug }: { slug: LegalDocument["slug"] }) {
       </aside>
 
       <article className="lg:col-span-7 lg:col-start-5">
-        <h1 className="display text-[clamp(2.75rem,5.5vw,5rem)] leading-[1]">{doc.title}</h1>
-        {doc.updatedAt ? <p className="mt-6 text-[0.8125rem] text-stone">Mise à jour : {doc.updatedAt}</p> : null}
+        <h1 className="display text-[clamp(1.375rem,3vw,2.5rem)] leading-[1.1]">{doc.title}</h1>
+        {doc.updatedAt ? <p className="mt-6 text-[0.625rem] text-stone">Mise à jour : {doc.updatedAt}</p> : null}
 
         {doc.draft ? (
-          <p role="note" className="mt-10 border-l border-carmine bg-white px-5 py-4 text-[0.875rem] leading-relaxed text-stone">
+          <p role="note" className="mt-10 border-l border-carmine bg-white px-5 py-4 copy text-stone">
             Document en cours de rédaction. Les sections marquées « À compléter » seront publiées après validation.
           </p>
         ) : null}
@@ -62,7 +62,7 @@ export function LegalPage({ slug }: { slug: LegalDocument["slug"] }) {
               </h2>
               <div className="prose-fadiye mt-4 space-y-3">
                 {section.body.map((paragraph) => (
-                  <p key={paragraph} className={paragraph.startsWith("[À compléter]") ? "italic" : undefined}>
+                  <p key={paragraph} className={paragraph.startsWith("[À compléter]") ? "text-silver" : undefined}>
                     {paragraph}
                   </p>
                 ))}

@@ -62,8 +62,8 @@ export default async function ConfirmationPage({ searchParams }: ConfirmationPro
         <span aria-hidden="true" className="inline-block h-px w-8 bg-carmine" />
         Commande
       </p>
-      <h1 className="display text-[clamp(3rem,7vw,6rem)]">{content.title}</h1>
-      <p className="prose-fadiye max-w-lg text-[1rem]">{content.text}</p>
+      <h1 className="display text-[clamp(1.75rem,4.4vw,3.75rem)]">{content.title}</h1>
+      <p className="prose-fadiye max-w-lg">{content.text}</p>
       <ButtonLink href={state === "unpaid" ? "/panier" : "/collection"} arrow>
         {state === "unpaid" ? "Retour au panier" : "Retour à la collection"}
       </ButtonLink>

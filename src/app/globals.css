@@ -20,8 +20,12 @@
   --color-line: #e2ddd6;
   --color-line-dark: #2a2928;
 
-  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-sans: var(--font-manrope), "Helvetica Neue", Arial, sans-serif;
+  /* Akira Expanded : titres et éléments fonctionnels (capitales larges).
+     Archivo Expanded ne sert qu'aux glyphes absents de la version démo
+     d'Akira (é, à, ç, €…). */
+  --font-sans: var(--font-akira), var(--font-archivo), "Arial Black", sans-serif;
+  /* Aquiline Two : textes éditoriaux. */
+  --font-serif: var(--font-aquiline), var(--font-archivo), Georgia, serif;
 
   --ease-couture: cubic-bezier(0.22, 0.61, 0.24, 1);
 
@@ -37,7 +41,20 @@
 
   body {
     @apply bg-paper font-sans text-ink antialiased;
-    font-feature-settings: "ss01", "kern";
+    /* Graisse et chasse accordées à Akira (aussi appliquées au secours Archivo). */
+    font-weight: 800;
+    font-stretch: 125%;
+    letter-spacing: 0.04em;
+    /* Akira n'a que des capitales : on force la casse pour que les lettres
+       accentuées fournies par la police de secours soient aussi en capitales. */
+    text-transform: uppercase;
+  }
+
+  /* Tout texte en Aquiline garde sa casse, sa graisse et son approche. */
+  .font-serif {
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: 0;
   }
 
   ::selection {
@@ -62,17 +79,44 @@
 @layer components {
   /* Petites capitales espacées : navigation, labels, boutons. */
   .eyebrow {
-    @apply font-sans text-[0.6875rem] font-medium uppercase tracking-[0.24em];
+    @apply font-sans text-[0.625rem] uppercase tracking-[0.14em];
+    font-weight: 800;
   }
 
   .display {
-    @apply font-serif font-light tracking-[-0.015em];
-    line-height: 0.98;
-    font-variant-numeric: lining-nums;
+    @apply font-sans uppercase tracking-[-0.01em];
+    font-weight: 800;
+    line-height: 1;
+    overflow-wrap: anywhere;
   }
 
+  /* Dans un titre, le mot souligné passe en calligraphie Aquiline. */
+  .display em {
+    font-family: var(--font-serif);
+    font-style: normal;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 1.35em;
+    line-height: 0.7;
+  }
+
+  /* Textes éditoriaux : Aquiline Two, à taille généreuse pour rester lisible. */
   .prose-fadiye {
-    @apply font-sans text-[0.9375rem] leading-[1.75] text-stone;
+    @apply font-serif text-[1.3125rem] leading-[1.45] text-stone;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* Notes et paragraphes courts en Aquiline. */
+  .copy {
+    font-family: var(--font-serif);
+    text-transform: none;
+    font-size: 1.1875rem;
+    line-height: 1.4;
+    font-weight: 400;
+    letter-spacing: 0;
   }
 
   .container-fadiye {

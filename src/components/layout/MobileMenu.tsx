@@ -59,7 +59,7 @@ export function MobileMenu({ open, onClose, isActive }: MobileMenuProps) {
                 className="group flex items-baseline gap-5 py-2"
               >
                 <span className="eyebrow w-6 text-stone">0{index + 1}</span>
-                <span className="display text-[2.75rem] transition-colors group-hover:text-carmine group-aria-[current=page]:italic">
+                <span className="display text-[1.625rem] transition-colors group-hover:text-carmine group-aria-[current=page]:text-carmine">
                   {item.label}
                 </span>
               </Link>
