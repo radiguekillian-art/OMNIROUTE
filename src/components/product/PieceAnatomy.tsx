@@ -59,7 +59,7 @@ export function PieceAnatomy({ image }: { image: ProductImage }) {
               onFocus={() => setActive(point.id)}
               onBlur={() => setActive(null)}
               className={cn(
-                "flex cursor-default items-baseline gap-4 border-b border-line py-4 text-[0.8125rem] outline-none transition-colors",
+                "flex cursor-default items-baseline gap-4 border-b border-line py-4 text-[0.625rem] outline-none transition-colors",
                 active === point.id ? "text-ink" : "text-stone",
               )}
             >

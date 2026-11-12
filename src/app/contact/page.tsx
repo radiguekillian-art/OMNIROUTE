@@ -29,7 +29,7 @@ export default function ContactPage() {
                 <div className="flex flex-col gap-3 py-8 sm:flex-row sm:items-baseline sm:justify-between">
                   <dt className="eyebrow text-stone">E-mail</dt>
                   <dd>
-                    <a href={`mailto:${email}`} className="display link-underline break-all text-3xl hover:text-carmine">
+                    <a href={`mailto:${email}`} className="display link-underline break-all text-lg hover:text-carmine">
                       {email}
                     </a>
                   </dd>
@@ -39,7 +39,7 @@ export default function ContactPage() {
                 <div className="flex flex-col gap-3 py-8 sm:flex-row sm:items-baseline sm:justify-between">
                   <dt className="eyebrow text-stone">Instagram</dt>
                   <dd>
-                    <a href={instagram} target="_blank" rel="noreferrer" className="display link-underline text-3xl hover:text-carmine">
+                    <a href={instagram} target="_blank" rel="noreferrer" className="display link-underline text-lg hover:text-carmine">
                       Suivre la maison<span className="sr-only"> (nouvel onglet)</span>
                     </a>
                   </dd>
@@ -47,7 +47,7 @@ export default function ContactPage() {
               ) : null}
             </dl>
           ) : (
-            <p className="border-l border-carmine pl-4 text-[0.9375rem] leading-relaxed text-stone">
+            <p className="copy border-l border-carmine pl-4 text-stone">
               Les coordonnées de la maison seront communiquées prochainement.
             </p>
           )}

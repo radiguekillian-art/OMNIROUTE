@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 
 import { JsonLd } from "@/components/seo/JsonLd";
-import { ButtonSection } from "@/components/home/ButtonSection";
-import { DropSection } from "@/components/home/DropSection";
 import { Hero } from "@/components/home/Hero";
-import { IdentitySection } from "@/components/home/IdentitySection";
-import { SignatureSection } from "@/components/home/SignatureSection";
+import { PieceShowcase } from "@/components/home/PieceShowcase";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -28,10 +25,7 @@ export default function HomePage() {
         }}
       />
       <Hero />
-      <DropSection />
-      <SignatureSection />
-      <ButtonSection />
-      <IdentitySection />
+      <PieceShowcase />
     </>
   );
 }

@@ -28,7 +28,7 @@ export function QuantitySelector({ value, onChange, label = "Quantité", size = 
       >
         <MinusIcon size={14} />
       </button>
-      <output aria-live="polite" aria-label={`${label} : ${value}`} className="min-w-8 text-center text-sm tabular-nums">
+      <output aria-live="polite" aria-label={`${label} : ${value}`} className="min-w-8 text-center text-[0.6875rem] tabular-nums">
         {value}
       </output>
       <button

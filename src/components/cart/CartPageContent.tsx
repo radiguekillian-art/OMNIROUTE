@@ -13,7 +13,7 @@ export function CartPageContent() {
   return (
     <div className="container-fadiye pb-24 pt-14 lg:pb-40 lg:pt-24">
       <div className="flex items-end justify-between gap-6 border-b border-line pb-8">
-        <h1 className="display text-[clamp(3.25rem,8vw,7rem)]">Panier</h1>
+        <h1 className="display text-[clamp(1.75rem,5.4vw,4.75rem)]">Panier</h1>
         {hydrated && count > 0 ? (
           <p className="eyebrow pb-3 text-stone">
             {count} article{count > 1 ? "s" : ""}
@@ -25,7 +25,7 @@ export function CartPageContent() {
         <div className="h-64" aria-busy="true" />
       ) : lines.length === 0 ? (
         <div className="flex flex-col items-start gap-8 py-20">
-          <p className="display text-4xl">Votre panier est vide.</p>
+          <p className="display text-xl">Votre panier est vide.</p>
           <ButtonLink href="/collection" arrow>
             Découvrir la collection
           </ButtonLink>

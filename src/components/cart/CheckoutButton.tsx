@@ -24,7 +24,7 @@ export function CheckoutButton({ className }: { className?: string }) {
         <Button className="w-full" disabled aria-describedby="checkout-status">
           Paiement bientôt disponible
         </Button>
-        <p id="checkout-status" className="mt-4 border-l border-carmine pl-4 text-[0.8125rem] leading-relaxed text-stone">
+        <p id="checkout-status" className="mt-4 border-l border-carmine pl-4 copy text-stone">
           Le paiement en ligne n&apos;est pas encore activé. Aucune commande ne peut être passée ni débitée pour le
           moment. Votre sélection reste enregistrée dans ce navigateur.
         </p>
@@ -38,7 +38,7 @@ export function CheckoutButton({ className }: { className?: string }) {
         <Button className="w-full" disabled aria-describedby="checkout-status">
           Commande indisponible
         </Button>
-        <p id="checkout-status" className="mt-4 border-l border-carmine pl-4 text-[0.8125rem] leading-relaxed text-stone">
+        <p id="checkout-status" className="mt-4 border-l border-carmine pl-4 copy text-stone">
           Certaines pièces de votre panier ne sont pas encore ouvertes à la vente ou n&apos;ont pas de prix confirmé.
         </p>
       </div>
@@ -69,7 +69,7 @@ export function CheckoutButton({ className }: { className?: string }) {
         {pending ? "Redirection…" : "Procéder au paiement"}
       </Button>
       {error ? (
-        <p role="alert" className="mt-4 text-[0.8125rem] text-carmine">
+        <p role="alert" className="mt-4 text-[0.625rem] text-carmine">
           {error}
         </p>
       ) : null}

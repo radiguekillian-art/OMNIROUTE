@@ -21,7 +21,7 @@ export function SizeGuideDialog({ guide, productName }: { guide: SizeGuide | und
         type="button"
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
-        className="text-[0.75rem] text-stone underline decoration-line underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+        className="text-[0.5625rem] text-stone underline decoration-line underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
       >
         Guide des tailles
       </button>
@@ -44,7 +44,7 @@ export function SizeGuideDialog({ guide, productName }: { guide: SizeGuide | und
           <div className="flex items-start justify-between gap-6">
             <div>
               <p className="eyebrow text-stone">{productName}</p>
-              <h2 id="size-guide-title" className="display mt-3 text-4xl">
+              <h2 id="size-guide-title" className="display mt-3 text-xl">
                 Guide des tailles
               </h2>
             </div>
@@ -61,7 +61,7 @@ export function SizeGuideDialog({ guide, productName }: { guide: SizeGuide | und
           {guide ? (
             <>
               <div className="mt-8 overflow-x-auto">
-                <table className="w-full min-w-[420px] border-collapse text-left text-[0.8125rem]">
+                <table className="w-full min-w-[420px] border-collapse text-left text-[0.625rem]">
                   <caption className="sr-only">Mesures de la pièce en centimètres, par taille</caption>
                   <thead>
                     <tr className="border-b border-ink">
@@ -80,7 +80,7 @@ export function SizeGuideDialog({ guide, productName }: { guide: SizeGuide | und
                       <tr key={row.label} className="border-b border-line">
                         <th scope="row" className="py-4 pr-4 font-normal">
                           {row.label}
-                          <span className="mt-1 block text-[0.75rem] text-stone">{row.description}</span>
+                          <span className="mt-1 block text-[0.5625rem] text-stone">{row.description}</span>
                         </th>
                         {row.values.map((value, index) => (
                           <td key={index} className="py-4 text-center tabular-nums text-stone">
@@ -93,7 +93,7 @@ export function SizeGuideDialog({ guide, productName }: { guide: SizeGuide | und
                 </table>
               </div>
               {!hasMeasurements ? (
-                <p className="mt-6 border-l border-carmine pl-4 text-[0.8125rem] leading-relaxed text-stone">
+                <p className="mt-6 border-l border-carmine pl-4 copy text-stone">
                   Les mesures de la pièce seront communiquées prochainement.
                 </p>
               ) : null}

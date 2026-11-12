@@ -7,7 +7,7 @@ export default function NotFound() {
         <span aria-hidden="true" className="inline-block h-px w-8 bg-carmine" />
         Erreur 404
       </p>
-      <h1 className="display text-[clamp(3rem,7vw,6rem)]">Page introuvable.</h1>
+      <h1 className="display text-[clamp(1.75rem,4.4vw,3.75rem)]">Page introuvable.</h1>
       <p className="prose-fadiye max-w-md">La page que vous cherchez n’existe pas ou a été déplacée.</p>
       <ButtonLink href="/" arrow>
         Retour à l’accueil

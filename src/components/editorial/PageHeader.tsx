@@ -21,13 +21,13 @@ export function PageHeader({ eyebrow, title, intro, aside, className }: PageHead
         </p>
       ) : null}
       <div className="mt-6 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        <h1 className="display animate-rise text-[clamp(3.25rem,8vw,7.5rem)]" style={{ animationDelay: "100ms" }}>
+        <h1 className="display animate-rise text-[clamp(1.75rem,5.4vw,4.75rem)]" style={{ animationDelay: "100ms" }}>
           {title}
         </h1>
         {aside ? <div className="animate-rise lg:pb-4" style={{ animationDelay: "200ms" }}>{aside}</div> : null}
       </div>
       {intro ? (
-        <div className="prose-fadiye animate-rise mt-8 max-w-xl text-[1rem]" style={{ animationDelay: "250ms" }}>
+        <div className="prose-fadiye animate-rise mt-8 max-w-xl" style={{ animationDelay: "250ms" }}>
           {intro}
         </div>
       ) : null}

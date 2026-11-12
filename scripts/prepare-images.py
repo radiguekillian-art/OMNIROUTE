@@ -2,12 +2,15 @@
 Génère les visuels optimisés du site à partir des originaux de `assets/originals/`.
 
 Aucun visuel n'est inventé : chaque fichier produit est soit l'original
-ré-encodé, soit un recadrage d'une photographie réelle, soit une
-recoloration du logo calligraphique (même tracé, autre couleur).
+ré-encodé, soit un recadrage d'une photographie réelle. Le logo garde ses
+couleurs d'origine. L'animation du hero (GIF) est convertie en vidéo
+MP4/WebM, beaucoup plus légère (nécessite ffmpeg).
 
 Usage : npm run images   (nécessite Python 3 + Pillow)
 """
 
+import shutil
+import subprocess
 from pathlib import Path
 
 from PIL import Image
@@ -19,21 +22,12 @@ PUBLIC = ROOT / "public" / "images"
 APP = ROOT / "src" / "app"
 
 OFF_WHITE = (247, 245, 242)
-INK = (9, 9, 9)
 
 
 def save_jpeg(img: Image.Image, path: Path, quality: int = 88) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     img.convert("RGB").save(path, "JPEG", quality=quality, optimize=True, progressive=True)
     print(f"  {path.relative_to(ROOT)}  {img.size[0]}x{img.size[1]}")
-
-
-def recolor(logo: Image.Image, rgb: tuple[int, int, int]) -> Image.Image:
-    """Même calligraphie, couleur unie : on conserve uniquement le canal alpha."""
-    alpha = logo.getchannel("A")
-    solid = Image.new("RGBA", logo.size, rgb + (255,))
-    solid.putalpha(alpha)
-    return solid
 
 
 def main() -> None:
@@ -57,16 +51,16 @@ def main() -> None:
     etiquette = Image.open(SRC / "etiquette.png").convert("RGB")
     save_jpeg(etiquette, product_dir / "etiquette.jpg", 88)
 
-    print("Logo")
+    print("Logo (couleurs d'origine, aucune recoloration)")
     logo = Image.open(SRC / "logo-fadiye.png").convert("RGBA")
     logo = logo.crop(logo.getbbox())
     width = 1400
-    logo = logo.resize((width, round(logo.height * width / logo.width)), Image.LANCZOS)
+    # Redimensionnement en alpha prémultiplié : pas de liseré sur les bords.
+    logo = logo.convert("RGBa").resize((width, round(logo.height * width / logo.width)), Image.LANCZOS).convert("RGBA")
     brand = OUT / "brand"
     brand.mkdir(parents=True, exist_ok=True)
-    for name, rgb in {"logo-fadiye-red.png": (200, 16, 37), "logo-fadiye-black.png": INK, "logo-fadiye-white.png": (255, 255, 255)}.items():
-        recolor(logo, rgb).save(brand / name, optimize=True)
-        print(f"  {(brand / name).relative_to(ROOT)}  {logo.size[0]}x{logo.size[1]}")
+    logo.save(brand / "logo-fadiye.png", optimize=True)
+    print(f"  {(brand / 'logo-fadiye.png').relative_to(ROOT)}  {logo.size[0]}x{logo.size[1]}")
 
     print("Icônes (lys de l'étiquette tissée)")
     lys = etiquette.crop((1198, 168, 1628, 598))
@@ -80,10 +74,27 @@ def main() -> None:
     panel = Image.new("RGB", (560, 630), (249, 249, 249))
     panel.paste(garment, ((560 - garment.width) // 2, 15))
     og.paste(panel, (640, 0))
-    mark = recolor(logo, INK)
-    mark = mark.resize((520, round(mark.height * 520 / mark.width)), Image.LANCZOS)
+    mark = logo.convert("RGBa").resize((520, round(logo.height * 520 / logo.width)), Image.LANCZOS).convert("RGBA")
     og.paste(mark, (60, (630 - mark.height) // 2), mark)
     save_jpeg(og, PUBLIC / "og" / "fadiye-og.jpg", 86)
+
+    print("Animation du hero (GIF → vidéo)")
+    gif = SRC / "hero-lys.gif"
+    media = ROOT / "public" / "media"
+    media.mkdir(parents=True, exist_ok=True)
+    scale = "scale=1000:-2:flags=lanczos"
+    commands = [
+        ["-vf", f"{scale},format=yuv420p", "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-movflags", "+faststart", "-an", str(media / "hero-lys.mp4")],
+        ["-vf", f"{scale},format=yuv420p", "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "32", "-row-mt", "1", "-an", str(media / "hero-lys.webm")],
+        ["-vf", f"select=eq(n\\,0),{scale}", "-frames:v", "1", "-q:v", "3", str(media / "hero-lys-poster.jpg")],
+        ["-vf", f"select=eq(n\\,104),{scale}", "-frames:v", "1", "-q:v", "3", str(media / "hero-lys-still.jpg")],
+    ]
+    if shutil.which("ffmpeg"):
+        for args in commands:
+            subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(gif), *args], check=True)
+            print(f"  {Path(args[-1]).relative_to(ROOT)}")
+    else:
+        print("  ffmpeg introuvable : vidéo non régénérée")
 
 
 if __name__ == "__main__":

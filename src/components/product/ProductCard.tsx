@@ -52,9 +52,9 @@ export function ProductCard({ product, priority, sizes = "(min-width: 1024px) 31
             <h3 className="eyebrow">
               <span className="link-underline group-hover:bg-[length:100%_1px]">{product.name}</span>
             </h3>
-            <p className="mt-2 text-[0.8125rem] text-stone">{status}</p>
+            <p className="mt-2 text-[0.625rem] text-stone">{status}</p>
           </div>
-          <p className={cn("shrink-0 text-right text-[0.8125rem]", product.price === null ? "max-w-32 text-stone" : "tabular-nums")}>
+          <p className={cn("shrink-0 text-right text-[0.625rem]", product.price === null ? "max-w-32 text-stone" : "tabular-nums")}>
             {formatPrice(product.price)}
           </p>
         </div>

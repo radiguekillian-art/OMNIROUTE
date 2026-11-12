@@ -41,7 +41,7 @@ export function ProductGrid({ items, emptyMessage }: { items: Product[]; emptyMe
           <div className="flex h-full flex-col justify-between gap-10 bg-ink p-8 text-white lg:p-12">
             <div>
               <p className="eyebrow text-silver">Collection 01 — Automne / Hiver</p>
-              <p className="display mt-6 max-w-md text-[clamp(2rem,3vw,3rem)] leading-[1.05]">
+              <p className="display mt-6 max-w-md text-[clamp(1.25rem,1.8vw,1.75rem)] leading-[1.15]">
                 Une première pièce, et tous les codes de la maison.
               </p>
             </div>

@@ -46,11 +46,11 @@ export default function MaisonPage() {
         </p>
         <h1 className="sr-only">La Maison FADIYE</h1>
         <blockquote
-          className="display animate-rise mt-10 max-w-6xl text-[clamp(2.1rem,4.6vw,4.5rem)] leading-[1.08]"
+          className="animate-rise mt-10 max-w-5xl font-serif text-[clamp(2rem,4vw,3.75rem)] font-normal leading-[1.15] tracking-normal"
           style={{ animationDelay: "120ms" }}
         >
           <p>
-            <span className="italic">FADIYE</span> {t.introLead}
+            <span className="text-carmine">FADIYE</span> {t.introLead}
           </p>
           <p className="mt-6 text-stone">{t.introRest}</p>
         </blockquote>
@@ -60,7 +60,7 @@ export default function MaisonPage() {
       <section aria-labelledby="chapitre-signature" className="bg-ink py-24 text-white lg:py-36">
         <div className="container-fadiye grid items-center gap-16 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-6">
-            <Logo variant="red" className="w-full max-w-[640px]" sizes="(min-width: 1024px) 46vw, 90vw" />
+            <Logo className="w-full max-w-[640px]" sizes="(min-width: 1024px) 46vw, 90vw" />
           </Reveal>
           <Reveal className="lg:col-span-4 lg:col-start-8" delay={120}>
             <p className="eyebrow flex items-center gap-4 text-silver">
@@ -68,10 +68,10 @@ export default function MaisonPage() {
               <span aria-hidden="true" className="inline-block h-px w-8 bg-line-dark" />
               La signature
             </p>
-            <h2 id="chapitre-signature" className="display mt-6 text-[clamp(2.5rem,4vw,3.75rem)] leading-[1.02]">
+            <h2 id="chapitre-signature" className="display mt-6 text-[clamp(1.5rem,2.6vw,2.375rem)] leading-[1.1]">
               Un nom devenu motif.
             </h2>
-            <p className="mt-8 text-[0.9375rem] leading-[1.8] text-silver">
+            <p className="prose-fadiye mt-8 text-silver">
               La calligraphie FADIYE, ses boucles et ses entrelacs, est le premier code de la maison. Elle n’est pas
               un simple logo : brodée en rouge sur la maille, tissée sur l’étiquette, elle devient un motif à part
               entière.
@@ -107,7 +107,7 @@ export default function MaisonPage() {
         <div className="container-fadiye grid gap-16 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
             <Chapter number="II" title="Le détail" />
-            <h2 id="chapitre-detail" className="display mt-6 text-[clamp(2.5rem,4vw,3.75rem)] leading-[1.02]">
+            <h2 id="chapitre-detail" className="display mt-6 text-[clamp(1.5rem,2.6vw,2.375rem)] leading-[1.1]">
               Le métal comme une parure.
             </h2>
             <p className="prose-fadiye mt-8 max-w-sm">
@@ -134,7 +134,7 @@ export default function MaisonPage() {
                 caption="Fermoirs argentés"
               />
               <div className="flex items-end">
-                <p className="display text-[clamp(1.5rem,2.2vw,2.25rem)] leading-[1.15] text-stone">
+                <p className="font-serif text-[clamp(1.6rem,2.4vw,2.4rem)] font-normal leading-[1.2] tracking-normal text-stone">
                   Le rouge pour la signature, l’argent pour la structure.
                 </p>
               </div>
@@ -153,7 +153,7 @@ export default function MaisonPage() {
           </Reveal>
           <Reveal className="order-1 lg:order-2 lg:col-span-4 lg:col-start-8" delay={120}>
             <Chapter number="III" title="La silhouette" />
-            <h2 id="chapitre-silhouette" className="display mt-6 text-[clamp(2.5rem,4vw,3.75rem)] leading-[1.02]">
+            <h2 id="chapitre-silhouette" className="display mt-6 text-[clamp(1.5rem,2.6vw,2.375rem)] leading-[1.1]">
               Une maille noire, une coupe ample.
             </h2>
             <p className="prose-fadiye mt-8 max-w-sm">
@@ -178,7 +178,7 @@ export default function MaisonPage() {
         <div className="container-fadiye">
           <Reveal className="max-w-2xl">
             <Chapter number="IV" title="Les codes" />
-            <h2 id="chapitre-codes" className="display mt-6 text-[clamp(2.5rem,4vw,3.75rem)] leading-[1.02]">
+            <h2 id="chapitre-codes" className="display mt-6 text-[clamp(1.5rem,2.6vw,2.375rem)] leading-[1.1]">
               Quatre couleurs, une identité.
             </h2>
           </Reveal>
@@ -187,8 +187,8 @@ export default function MaisonPage() {
               <Reveal as="li" key={color.hex} delay={index * 100}>
                 <div className="aspect-[4/5] border border-line" style={{ backgroundColor: color.hex }} />
                 <p className="eyebrow mt-5">{color.name}</p>
-                <p className="mt-1 text-[0.75rem] uppercase tabular-nums tracking-[0.12em] text-stone">{color.hex}</p>
-                <p className="mt-3 max-w-[16rem] text-[0.8125rem] leading-relaxed text-stone">{color.note}</p>
+                <p className="mt-1 text-[0.5625rem] uppercase tabular-nums tracking-[0.12em] text-stone">{color.hex}</p>
+                <p className="mt-3 max-w-[16rem] copy text-stone">{color.note}</p>
               </Reveal>
             ))}
           </ul>
@@ -198,8 +198,8 @@ export default function MaisonPage() {
       {/* Clôture */}
       <section className="border-t border-line py-24 lg:py-32">
         <Reveal className="container-fadiye flex flex-col items-center text-center">
-          <p className="display max-w-3xl text-[clamp(2.25rem,4.4vw,4rem)] leading-[1.05]">
-            Des pièces pensées pour <em className="italic">laisser une empreinte.</em>
+          <p className="display max-w-3xl text-[clamp(1.5rem,3vw,2.75rem)] leading-[1.15]">
+            Des pièces pensées pour <em>laisser une empreinte.</em>
           </p>
           <ButtonLink href="/collection" className="mt-12" arrow>
             Découvrir la collection

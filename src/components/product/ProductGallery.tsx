@@ -81,7 +81,7 @@ export function ProductGallery({ images, productName }: { images: ProductImage[]
             <ZoomIcon size={18} />
           </span>
         </button>
-        <figcaption className="mt-3 flex gap-4 text-[0.75rem] text-stone">
+        <figcaption className="mt-3 flex gap-4 text-[0.5625rem] text-stone">
           <span className="eyebrow text-carmine">{String(index + 1).padStart(2, "0")}</span>
           {image.caption}
         </figcaption>
@@ -130,7 +130,7 @@ export function ProductGallery({ images, productName }: { images: ProductImage[]
           ))}
         </div>
         <div className="mt-4 flex items-center justify-between">
-          <p className="text-[0.75rem] text-stone">
+          <p className="text-[0.5625rem] text-stone">
             <span className="eyebrow mr-3 text-ink tabular-nums">
               {current + 1} / {images.length}
             </span>
@@ -171,7 +171,7 @@ export function ProductGallery({ images, productName }: { images: ProductImage[]
           return (
             <div key={rowIndex} className="grid grid-cols-2 items-end gap-8">
               {tile(row.index, "(min-width: 1520px) 420px, 28vw", "aspect-[4/5] object-cover")}
-              <p className="display max-w-xs pb-10 text-[1.75rem] leading-[1.15] text-stone">
+              <p className="prose-fadiye max-w-xs pb-10 text-[1.75rem] leading-[1.2]">
                 Chaque détail participe à l’identité de la pièce.
               </p>
             </div>

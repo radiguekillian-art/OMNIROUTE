@@ -65,7 +65,11 @@ export type Product = {
   care: string | null;
   /** La première image est la principale, la seconde sert au survol. */
   images: ProductImage[];
+  /** Spécificités détaillées sur la fiche produit ; `image` = index dans `images`. */
+  details: ProductDetail[];
 };
+
+export type ProductDetail = { title: string; text: string; image: number };
 
 const CANVAS = "#f8f8f8";
 
@@ -141,6 +145,33 @@ export const products: Product[] = [
         background: "#0a0a0a",
       },
       // Vue arrière : à ajouter dès que la photographie est disponible.
+    ],
+    details: [
+      {
+        title: "Broderie calligraphique",
+        text: "La signature FADIYE, brodée en rouge le long du devant, déploie ses boucles et ses entrelacs sur la maille noire.",
+        image: 1,
+      },
+      {
+        title: "Boutons signature",
+        text: "Des boutons argentés ornés d’un lys araignée en relief, le symbole discret de la maison.",
+        image: 2,
+      },
+      {
+        title: "Fermoirs argentés",
+        text: "Deux fermoirs métalliques argentés ponctuent le haut de la patte de boutonnage, sous le col rond côtelé.",
+        image: 3,
+      },
+      {
+        title: "Maille et côtes",
+        text: "Une maille noire, des poignets et un bas côtelés : la base sobre et structurée d’une silhouette oversize.",
+        image: 4,
+      },
+      {
+        title: "Étiquette intérieure",
+        text: "Une étiquette tissée qui reprend la calligraphie et le lys rouges : la signature se lit aussi à l’intérieur.",
+        image: 5,
+      },
     ],
   },
 ];

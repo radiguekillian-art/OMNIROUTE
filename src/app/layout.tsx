@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Archivo } from "next/font/google";
+import localFont from "next/font/local";
 
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { CartProvider } from "@/components/cart/CartProvider";
@@ -10,17 +11,27 @@ import { isPaymentConfigured } from "@/lib/payments";
 
 import "./globals.css";
 
-const serif = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-cormorant",
+/** Titres et éléments fonctionnels. ⚠️ Version démo : licence commerciale à acquérir. */
+const akira = localFont({
+  src: "../assets/fonts/akira-expanded.woff2",
+  weight: "100 900",
+  variable: "--font-akira",
   display: "swap",
 });
 
-const sans = Manrope({
+/** Textes éditoriaux. */
+const aquiline = localFont({
+  src: "../assets/fonts/aquiline-two.woff2",
+  weight: "100 900",
+  variable: "--font-aquiline",
+  display: "swap",
+});
+
+/** Secours pour les glyphes absents d'Akira démo (accents, €). */
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  axes: ["wdth"],
+  variable: "--font-archivo",
   display: "swap",
 });
 
@@ -57,7 +68,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${serif.variable} ${sans.variable}`} suppressHydrationWarning>
+    <html lang="fr" className={`${akira.variable} ${aquiline.variable} ${archivo.variable}`} suppressHydrationWarning>
       <head>
         {/* Active les apparitions progressives uniquement si JavaScript est disponible. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
