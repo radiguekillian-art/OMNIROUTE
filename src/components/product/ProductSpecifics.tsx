@@ -20,21 +20,21 @@ function textColumns(landscape: boolean, reversed: boolean) {
 /** Section « Spécificités » de la fiche produit : anatomie annotée puis chaque détail illustré. */
 export function ProductSpecifics({ product }: { product: Product }) {
   return (
-    <section id="specificites" aria-labelledby="specificites-title" className="scroll-mt-16 bg-white py-20 lg:scroll-mt-[76px] lg:py-32">
+    <section id="specificites" aria-labelledby="specificites-title" className="scroll-mt-16 bg-ink py-20 text-white lg:scroll-mt-[76px] lg:py-32">
       <div className="container-fadiye">
         <Reveal className="max-w-3xl">
-          <p className="eyebrow flex items-center gap-4 text-stone">
+          <p className="eyebrow flex items-center gap-4 text-silver">
             <span aria-hidden="true" className="inline-block h-px w-8 bg-carmine" />
             {product.name}
           </p>
           <h2 id="specificites-title" className="display mt-6 text-[clamp(2rem,4.4vw,4rem)]">
             Les <em>spécificités</em>
           </h2>
-          <p className="prose-fadiye mt-6 max-w-xl">{product.description}</p>
+          <p className="prose-fadiye mt-6 max-w-xl text-silver">{product.description}</p>
         </Reveal>
 
         <Reveal className="mt-14 lg:mt-20">
-          <PieceAnatomy image={product.images[0]} />
+          <PieceAnatomy image={product.images[0]} tone="dark" />
         </Reveal>
 
         <ol className="mt-20 space-y-20 lg:mt-32 lg:space-y-28">
@@ -58,18 +58,18 @@ export function ProductSpecifics({ product }: { product: Product }) {
                 <div className={textColumns(landscape, reversed)}>
                   <p className="eyebrow text-carmine">{String(index + 1).padStart(2, "0")}</p>
                   <h3 className="display mt-4 text-[clamp(1.25rem,2vw,1.75rem)] leading-[1.1]">{detail.title}</h3>
-                  <p className="prose-fadiye mt-5 max-w-sm">{detail.text}</p>
+                  <p className="prose-fadiye mt-5 max-w-sm text-silver">{detail.text}</p>
                 </div>
               </Reveal>
             );
           })}
         </ol>
 
-        <Reveal className="mt-24 border-t border-line pt-10 lg:mt-32">
-          <h3 className="eyebrow">Caractéristiques</h3>
+        <Reveal className="mt-24 border-t border-line-dark pt-10 lg:mt-32">
+          <h3 className="eyebrow text-silver">Caractéristiques</h3>
           <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
             {product.features.map((feature) => (
-              <li key={feature} className="flex items-baseline gap-3 text-[0.625rem]">
+              <li key={feature} className="flex items-baseline gap-3 text-[1.1875rem]">
                 <span aria-hidden="true" className="inline-block h-px w-3 shrink-0 translate-y-[-0.2em] bg-carmine" />
                 {feature}
               </li>

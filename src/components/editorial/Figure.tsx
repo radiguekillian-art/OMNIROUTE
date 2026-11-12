@@ -46,7 +46,7 @@ export function Figure({
       {caption ? (
         <figcaption
           className={cn(
-            "mt-4 flex items-baseline gap-4 text-[0.5625rem] tracking-[0.04em]",
+            "mt-4 flex items-baseline gap-4 text-[1rem]",
             tone === "dark" ? "text-stone" : "text-silver",
           )}
         >

@@ -58,7 +58,7 @@ export function Lightbox({ images, index, onClose, onChange }: LightboxProps) {
       className={cn("overlay fixed inset-0 z-[60] flex flex-col bg-paper", open ? "opacity-100" : "opacity-0")}
     >
       <div className="container-fadiye flex h-16 shrink-0 items-center justify-between">
-        <p className="text-[0.5625rem] text-stone" aria-live="polite">
+        <p className="text-[1rem] text-stone" aria-live="polite">
           <span className="eyebrow mr-3 text-ink tabular-nums">
             {current + 1} / {images.length}
           </span>

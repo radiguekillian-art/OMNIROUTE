@@ -63,19 +63,19 @@ export function PurchasePanel({ slug, sizeGuide }: { slug: string; sizeGuide: Si
           errorId={`${id}-error`}
         />
         {!product.sizesConfirmed ? (
-          <p className="mt-3 text-[0.5625rem] text-stone">Grille de tailles en cours de confirmation.</p>
+          <p className="mt-3 text-[1rem] text-stone">Grille de tailles en cours de confirmation.</p>
         ) : null}
       </div>
 
       <div className="flex items-stretch gap-3">
         <QuantitySelector value={quantity} onChange={setQuantity} />
-        <Button className="flex-1" onClick={handleAdd} disabled={!addable || allSoldOut}>
+        <Button className="min-w-0 flex-1 whitespace-normal leading-tight" onClick={handleAdd} disabled={!addable || allSoldOut}>
           {allSoldOut ? "Épuisé" : addable ? "Ajouter au panier" : "Bientôt disponible"}
         </Button>
       </div>
 
       {error ? (
-        <p id={`${id}-error`} role="alert" className="-mt-4 text-[0.625rem] text-carmine">
+        <p id={`${id}-error`} role="alert" className="-mt-4 text-[1.0625rem] text-carmine">
           {error}
         </p>
       ) : null}

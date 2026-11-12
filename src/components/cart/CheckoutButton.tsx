@@ -69,7 +69,7 @@ export function CheckoutButton({ className }: { className?: string }) {
         {pending ? "Redirection…" : "Procéder au paiement"}
       </Button>
       {error ? (
-        <p role="alert" className="mt-4 text-[0.625rem] text-carmine">
+        <p role="alert" className="mt-4 text-[1.0625rem] text-carmine">
           {error}
         </p>
       ) : null}

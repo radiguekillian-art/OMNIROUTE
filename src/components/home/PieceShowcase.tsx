@@ -48,7 +48,7 @@ export function PieceShowcase() {
             Cardigan <span className="text-carmine">FADIYE</span>
           </h2>
           <p className="prose-fadiye mt-6 max-w-md">{product.tagline}</p>
-          <p className="mt-8 flex items-baseline justify-between gap-6 border-y border-line py-4 text-[0.625rem]">
+          <p className="mt-8 flex items-baseline justify-between gap-6 border-y border-line py-4 text-[1.0625rem]">
             <span className="text-stone">{availabilityLabel(product)}</span>
             <span className={product.price === null ? "text-stone" : "tabular-nums"}>{formatPrice(product.price)}</span>
           </p>

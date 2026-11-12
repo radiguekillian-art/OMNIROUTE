@@ -19,7 +19,8 @@ const points = [
  * Anatomie de la pièce : la photographie principale annotée de ses détails.
  * Survoler (ou focaliser) une légende met le point correspondant en évidence.
  */
-export function PieceAnatomy({ image }: { image: ProductImage }) {
+export function PieceAnatomy({ image, tone = "light" }: { image: ProductImage; tone?: "light" | "dark" }) {
+  const dark = tone === "dark";
   const [active, setActive] = useState<string | null>(null);
 
   return (
@@ -37,7 +38,7 @@ export function PieceAnatomy({ image }: { image: ProductImage }) {
             key={point.id}
             aria-hidden="true"
             className={cn(
-              "absolute grid h-7 w-7 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border text-[0.625rem] font-medium tabular-nums transition-all duration-500 ease-[var(--ease-couture)]",
+              "absolute grid h-7 w-7 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border font-sans text-[0.625rem] tabular-nums transition-all duration-500 ease-[var(--ease-couture)]",
               active === point.id
                 ? "scale-125 border-carmine bg-carmine text-white"
                 : "border-white/80 bg-ink/55 text-white backdrop-blur-sm",
@@ -49,7 +50,7 @@ export function PieceAnatomy({ image }: { image: ProductImage }) {
         ))}
       </div>
 
-      <ol className="space-y-0 border-t border-line">
+      <ol className={cn("space-y-0 border-t", dark ? "border-line-dark" : "border-line")}>
         {points.map((point, index) => (
           <li key={point.id}>
             <p
@@ -59,8 +60,9 @@ export function PieceAnatomy({ image }: { image: ProductImage }) {
               onFocus={() => setActive(point.id)}
               onBlur={() => setActive(null)}
               className={cn(
-                "flex cursor-default items-baseline gap-4 border-b border-line py-4 text-[0.625rem] outline-none transition-colors",
-                active === point.id ? "text-ink" : "text-stone",
+                "flex cursor-default items-baseline gap-4 border-b py-4 text-[1.1875rem] outline-none transition-colors",
+                dark ? "border-line-dark" : "border-line",
+                active === point.id ? (dark ? "text-white" : "text-ink") : dark ? "text-silver" : "text-stone",
               )}
             >
               <span className="eyebrow w-5 text-carmine">{String(index + 1).padStart(2, "0")}</span>

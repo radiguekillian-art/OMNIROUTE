@@ -21,7 +21,7 @@ export function SizeGuideDialog({ guide, productName }: { guide: SizeGuide | und
         type="button"
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
-        className="text-[0.5625rem] text-stone underline decoration-line underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
+        className="text-[1rem] text-stone underline decoration-line underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
       >
         Guide des tailles
       </button>
@@ -61,7 +61,7 @@ export function SizeGuideDialog({ guide, productName }: { guide: SizeGuide | und
           {guide ? (
             <>
               <div className="mt-8 overflow-x-auto">
-                <table className="w-full min-w-[420px] border-collapse text-left text-[0.625rem]">
+                <table className="w-full min-w-[420px] border-collapse text-left text-[1.0625rem]">
                   <caption className="sr-only">Mesures de la pièce en centimètres, par taille</caption>
                   <thead>
                     <tr className="border-b border-ink">
@@ -80,7 +80,7 @@ export function SizeGuideDialog({ guide, productName }: { guide: SizeGuide | und
                       <tr key={row.label} className="border-b border-line">
                         <th scope="row" className="py-4 pr-4 font-normal">
                           {row.label}
-                          <span className="mt-1 block text-[0.5625rem] text-stone">{row.description}</span>
+                          <span className="mt-1 block text-[1rem] text-stone">{row.description}</span>
                         </th>
                         {row.values.map((value, index) => (
                           <td key={index} className="py-4 text-center tabular-nums text-stone">

@@ -55,6 +55,8 @@ export type Product = {
   tagline: string;
   description: string;
   features: string[];
+  /** Coloris proposés (le premier est celui photographié). */
+  colors: { name: string; hex: string }[];
   /** Prix TTC en centimes. `null` = non communiqué. */
   price: number | null;
   status: ProductStatus;
@@ -93,6 +95,7 @@ export const products: Product[] = [
       "Deux fermoirs métalliques argentés",
       "Boutons signature argentés avec fleur en relief",
     ],
+    colors: [{ name: "Noir", hex: "#090909" }],
     // À CONFIGURER — prix TTC en centimes, ex. 25000 pour 250,00 €.
     price: null,
     // À CONFIGURER — passer à "available" à l'ouverture des ventes.

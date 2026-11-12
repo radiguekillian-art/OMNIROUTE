@@ -98,7 +98,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
                     key={term}
                     type="button"
                     onClick={() => setQuery(term)}
-                    className="border border-line px-4 py-2 text-[0.625rem] transition-colors hover:border-ink"
+                    className="border border-line px-4 py-2 text-[1.0625rem] transition-colors hover:border-ink"
                   >
                     {term}
                   </button>
@@ -124,7 +124,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
                           />
                         </div>
                         <p className="eyebrow mt-4">{product.name}</p>
-                        <p className="mt-1 text-[0.625rem] text-stone">
+                        <p className="mt-1 text-[1.0625rem] text-stone">
                           {product.price === null ? availabilityLabel(product) : formatPrice(product.price)}
                         </p>
                       </Link>

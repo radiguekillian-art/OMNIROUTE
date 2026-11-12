@@ -103,3 +103,31 @@ export function ZoomIcon(props: IconProps) {
     </Svg>
   );
 }
+
+export function TruckIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M2.75 6.75h11v9.5h-11zM13.75 10.25h4l3.5 3.25v2.75h-7.5" />
+      <circle cx="6.5" cy="17.75" r="1.75" />
+      <circle cx="17" cy="17.75" r="1.75" />
+    </Svg>
+  );
+}
+
+export function ReturnIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M8.5 5.5 4.5 9.5l4 4" />
+      <path d="M4.5 9.5h10.25a4.75 4.75 0 0 1 0 9.5H9" />
+    </Svg>
+  );
+}
+
+export function LockIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M5.75 10.75h12.5v9.5H5.75z" />
+      <path d="M8.5 10.75V7.5a3.5 3.5 0 0 1 7 0v3.25" />
+    </Svg>
+  );
+}

@@ -3,14 +3,12 @@ Génère les visuels optimisés du site à partir des originaux de `assets/origi
 
 Aucun visuel n'est inventé : chaque fichier produit est soit l'original
 ré-encodé, soit un recadrage d'une photographie réelle. Le logo garde ses
-couleurs d'origine. L'animation du hero (GIF) est convertie en vidéo
-MP4/WebM, beaucoup plus légère (nécessite ffmpeg).
+couleurs d'origine. Le fond du pied de page est un flou de l'image
+d'ambiance ; le hero est traité à part (scripts/upscale-hero.py).
 
 Usage : npm run images   (nécessite Python 3 + Pillow)
 """
 
-import shutil
-import subprocess
 from pathlib import Path
 
 from PIL import Image
@@ -78,24 +76,14 @@ def main() -> None:
     og.paste(mark, (60, (630 - mark.height) // 2), mark)
     save_jpeg(og, PUBLIC / "og" / "fadiye-og.jpg", 86)
 
-    print("Animation du hero (GIF → vidéo)")
-    gif = SRC / "hero-lys.gif"
-    media = ROOT / "public" / "media"
-    media.mkdir(parents=True, exist_ok=True)
-    scale = "scale=1000:-2:flags=lanczos"
-    commands = [
-        ["-vf", f"{scale},format=yuv420p", "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-movflags", "+faststart", "-an", str(media / "hero-lys.mp4")],
-        ["-vf", f"{scale},format=yuv420p", "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "32", "-row-mt", "1", "-an", str(media / "hero-lys.webm")],
-        ["-vf", f"select=eq(n\\,0),{scale}", "-frames:v", "1", "-q:v", "3", str(media / "hero-lys-poster.jpg")],
-        ["-vf", f"select=eq(n\\,104),{scale}", "-frames:v", "1", "-q:v", "3", str(media / "hero-lys-still.jpg")],
-    ]
-    if shutil.which("ffmpeg"):
-        for args in commands:
-            subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(gif), *args], check=True)
-            print(f"  {Path(args[-1]).relative_to(ROOT)}")
-    else:
-        print("  ffmpeg introuvable : vidéo non régénérée")
+    print("Fond flouté du pied de page")
+    from PIL import ImageEnhance, ImageFilter
 
+    fond = Image.open(SRC / "fond-lys-rouges.webp").convert("RGB")
+    fond = fond.resize((1600, round(1600 * fond.height / fond.width)), Image.BICUBIC)
+    fond = ImageEnhance.Brightness(fond.filter(ImageFilter.GaussianBlur(28))).enhance(0.62)
+    save_jpeg(fond, OUT / "ambiance" / "fond-lys-rouges-flou.jpg", 80)
+    # Le hero est agrandi par super-résolution : voir scripts/upscale-hero.py.
 
 if __name__ == "__main__":
     main()

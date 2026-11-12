@@ -31,7 +31,7 @@ export function LegalPage({ slug }: { slug: LegalDocument["slug"] }) {
                   href={item.href}
                   aria-current={item.href === `/${slug}` ? "page" : undefined}
                   className={cn(
-                    "link-underline text-[0.6875rem] transition-colors",
+                    "link-underline text-[1.125rem] transition-colors",
                     item.href === `/${slug}` ? "text-ink" : "text-stone hover:text-ink",
                   )}
                 >
@@ -45,7 +45,7 @@ export function LegalPage({ slug }: { slug: LegalDocument["slug"] }) {
 
       <article className="lg:col-span-7 lg:col-start-5">
         <h1 className="display text-[clamp(1.375rem,3vw,2.5rem)] leading-[1.1]">{doc.title}</h1>
-        {doc.updatedAt ? <p className="mt-6 text-[0.625rem] text-stone">Mise à jour : {doc.updatedAt}</p> : null}
+        {doc.updatedAt ? <p className="mt-6 text-[1.0625rem] text-stone">Mise à jour : {doc.updatedAt}</p> : null}
 
         {doc.draft ? (
           <p role="note" className="mt-10 border-l border-carmine bg-white px-5 py-4 copy text-stone">
